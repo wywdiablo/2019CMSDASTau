@@ -19,7 +19,7 @@ ProduceEveryShapesInput(TString eta="XXX",TString wp = "XXX", bool deepTau = tru
     //Probe Muon energy scale
     // ProduceDatacardInputs_MuTauFR_m_vis_Scale_ZMM("NAME OF THE SYSTEMATIC IN TREE","NAME OF THE SAME TEMPLATE TO BE STORED",eta,wp,LOWER BOUND,UPPER BOUND,BIN NUMBER,PASS OR FAIL,DEEPTAU OR NOT,"EXTRA CUTS");
     
-    //<-- Please fill in the following Muon Energy scale shape systematic
+    //<-- Please fill in the following Muon faking tau energy scale shape systematic
     ProduceDatacardInputs_MuTauFR_m_vis_Scale_ZMM("XXX","probemuon_Up",eta,wp,70,120,10,true,deepTau,"*tauidweight");
     ProduceDatacardInputs_MuTauFR_m_vis_Scale_ZMM("XXX","probemuon_Up",eta,wp,70,120,1,false,deepTau,"*tauidweight");
     ProduceDatacardInputs_MuTauFR_m_vis_Scale_ZMM("XXX","probemuon_Down",eta,wp,70,120,10,true,deepTau,"*tauidweight");
