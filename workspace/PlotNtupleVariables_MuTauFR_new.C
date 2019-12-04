@@ -133,7 +133,7 @@ void PlotNtupleVariables_MuTauFR_new(
 	for (int i=0; i<nSamples; ++i)
 	{
 		std::cout <<i<<":"+samples[i]<<std::endl;
-		TFile * file = new TFile("./NTuples/"+samples[i]+".root"); //reading the root files
+		TFile * file = new TFile("XXX"+samples[i]+".root"); //reading the root files <-- chane the directory to ready the files
 		TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
 		TTree * tree = (TTree*)file->Get("MuTauFR"); //reading the tree in the root file
         double normaliza = xsec[i]*lumi/histWeightsH->GetSumOfWeights(); //here normaliza the MC with the luminosity, "histWeightsH->GetSumOfWeights()" is the total number of weighted events, for LO with mcweight = 1, one can sure use get entires. But for the case of mc weight != 1, one should use GetSumOfWeights
