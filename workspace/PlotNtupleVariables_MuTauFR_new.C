@@ -190,7 +190,7 @@ void PlotNtupleVariables_MuTauFR_new(
     double dyRefEvents[5] = {97800939,34859434,9790490,6897933,4346952};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("./NTuples/"+dyRefSamples[iDY]+".root");
+        TFile * file = new TFile("XXX"+dyRefSamples[iDY]+".root");//<-- change the correct path!!
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         dyRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
@@ -302,7 +302,7 @@ void PlotNtupleVariables_MuTauFR_new(
     // filling histograms for DYJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("./NTuples/"+dySampleNames[i]+".root");
+        TFile * file = new TFile("XXX"+dySampleNames[i]+".root");//<-- change the correct path!!
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = dyNorm[i];
         TString histNameZMM = dySampleNames[i] + "_"+varName+"_ZMM";
@@ -426,7 +426,7 @@ void PlotNtupleVariables_MuTauFR_new(
     double wRefEvents[5] = {74635450,54988117,32368249,19700377,11333705};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("./NTuples/"+wRefSamples[iDY]+".root");
+        TFile * file = new TFile("XXX"+wRefSamples[iDY]+".root");//<-- change the correct path!!
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         wRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
@@ -491,7 +491,7 @@ void PlotNtupleVariables_MuTauFR_new(
     // filling histograms for WJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("./NTuples/"+wSampleNames[i]+".root");
+        TFile * file = new TFile("XXX"+wSampleNames[i]+".root");//<-- change the correct path!!
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = wNorm[i];
         TString histName = wSampleNames[i] + "_"+varName;
