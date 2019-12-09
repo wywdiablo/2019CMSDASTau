@@ -174,7 +174,7 @@ void ProduceDatacardInputs_MuTauFR(
 	for (int i=0; i<nSamples; ++i)
 	{
 		std::cout <<i<<":"+samples[i]<<std::endl;
-		TFile * file = new TFile("./NTuples/"+samples[i]+".root");
+		TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+samples[i]+".root");
 		TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
 		TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = xsec[i]*lumi/histWeightsH->GetSumOfWeights();
@@ -227,7 +227,7 @@ void ProduceDatacardInputs_MuTauFR(
     double dyRefEvents[5] = {97800939,34859434,9790490,6897933,4346952};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("./NTuples/"+dyRefSamples[iDY]+".root");
+        TFile * file = new TFile("/home/cmsdas/yiwen/CMSDAS/NTuples/"+dyRefSamples[iDY]+".root");
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         dyRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
@@ -389,7 +389,7 @@ void ProduceDatacardInputs_MuTauFR(
     // filling histograms for DYJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("./NTuples/"+dySampleNames[i]+".root");
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+dySampleNames[i]+".root");
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = dyNorm[i];
         TString histNameZMM = dySampleNames[i] + "_"+varName+"_ZMM";
@@ -614,7 +614,7 @@ void ProduceDatacardInputs_MuTauFR(
     // filling histograms for WJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("./NTuples/"+wSampleNames[i]+".root");
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+wSampleNames[i]+".root");
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = wNorm[i];
         TString histName = wSampleNames[i] + "_"+varName;

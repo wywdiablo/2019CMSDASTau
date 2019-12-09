@@ -72,7 +72,7 @@ void ProduceDatacardInputs_MuTauFR_m_vis_Scale_ZMM(
     double dyRefEvents[5] = {97800939,34859434,9790490,6897933,4346952};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("./NTuples/"+dyRefSamples[iDY]+".root");
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+dyRefSamples[iDY]+".root");
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         dyRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
@@ -171,7 +171,7 @@ void ProduceDatacardInputs_MuTauFR_m_vis_Scale_ZMM(
     // filling histograms for DYJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("./NTuples/"+dySampleNames[i]+".root");
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+dySampleNames[i]+".root");
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = dyNorm[i];
         TString histNameZMM = dySampleNames[i] + "_"+varName+"_ZMM";
