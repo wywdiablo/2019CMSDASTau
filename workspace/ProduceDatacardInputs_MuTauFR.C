@@ -514,7 +514,7 @@ void ProduceDatacardInputs_MuTauFR(
     double wRefEvents[5] = {74635450,54988117,32368249,19700377,11333705};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("./NTuples/"+wRefSamples[iDY]+".root");
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+wRefSamples[iDY]+".root");
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         wRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
