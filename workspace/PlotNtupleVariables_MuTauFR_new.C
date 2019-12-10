@@ -54,7 +54,7 @@ void PlotNtupleVariables_MuTauFR_new(
     };
 
     //Specifying the luminosity
-	float lumi = XXX; //insert the luminosity of the year 2018
+	float lumi = XXX; //insert the luminosity of the year 2018, in the unit of /pb, which is 59700 in 2018
 	
     //Deal with bins and binning
 	float xMin = xLower;
@@ -77,7 +77,7 @@ void PlotNtupleVariables_MuTauFR_new(
     //Initiation of deep tau discriminators
     if (deepTau)
     {
-        whatTauid = "XXX"; // insert the cut of tau reconstuction and the VSjet discriminator, formatted as the one above
+        whatTauid = "DecayModeFindingNewProbe>0.5 && XXX"; // insert the the VSjet discriminator
         whatAntiMu = "XXX"; // insert the VSmu discriminator
     }
     
@@ -108,8 +108,8 @@ void PlotNtupleVariables_MuTauFR_new(
     {
         for (int i=0; i<nSamples; ++i)
         {
-            cuts[i] ="(XXX&&"+whatTauid+">0.5)*"+cuts[i]; //insert here the definition of PASS and FAIL probe
-            cutsSS[i] ="(XXX&&"+whatTauid+">0.5)*"+cutsSS[i]; //insert here the definition of PASS and FAIL probe
+            cuts[i] ="("+whatAntiMu+"__0.5&&"+whatTauid+">0.5)*"+cuts[i]; //insert here the definition of PASS probe
+            cutsSS[i] ="("+whatAntiMu+"__0.5&&"+whatTauid+">0.5)*"+cutsSS[i]; //insert here the definition of PASS probe
         }
         
     }
@@ -117,8 +117,8 @@ void PlotNtupleVariables_MuTauFR_new(
     {
         for (int i=0; i<nSamples; ++i)
         {
-            cuts[i] ="(XXX&&"+whatTauid+">0.5)*"+cuts[i]; //insert here the definition of PASS and FAIL probe
-            cutsSS[i] ="(XXX&&"+whatTauid+">0.5)*"+cutsSS[i]; //insert here the definition of PASS and FAIL probe
+            cuts[i] ="("+whatAntiMu+"__0.5&&"+whatTauid+">0.5)*"+cuts[i]; //insert here the definition of FAIL probe
+            cutsSS[i] ="("+whatAntiMu+"__0.5&&"+whatTauid+">0.5)*"+cutsSS[i]; //insert here the definition of FAIL probe
         }
     }
 
@@ -133,7 +133,7 @@ void PlotNtupleVariables_MuTauFR_new(
 	for (int i=0; i<nSamples; ++i)
 	{
 		std::cout <<i<<":"+samples[i]<<std::endl;
-		TFile * file = new TFile("XXX"+samples[i]+".root"); //reading the root files <-- chane the directory to ready the files
+		TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+samples[i]+".root"); //reading the root files
 		TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
 		TTree * tree = (TTree*)file->Get("MuTauFR"); //reading the tree in the root file
         double normaliza = xsec[i]*lumi/histWeightsH->GetSumOfWeights(); //here normaliza the MC with the luminosity, "histWeightsH->GetSumOfWeights()" is the total number of weighted events, for LO with mcweight = 1, one can sure use get entires. But for the case of mc weight != 1, one should use GetSumOfWeights
@@ -190,7 +190,7 @@ void PlotNtupleVariables_MuTauFR_new(
     double dyRefEvents[5] = {97800939,34859434,9790490,6897933,4346952};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("XXX"+dyRefSamples[iDY]+".root");//<-- change the correct path!!
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+dyRefSamples[iDY]+".root");
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         dyRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
@@ -302,7 +302,7 @@ void PlotNtupleVariables_MuTauFR_new(
     // filling histograms for DYJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("XXX"+dySampleNames[i]+".root");//<-- change the correct path!!
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+dySampleNames[i]+".root");
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = dyNorm[i];
         TString histNameZMM = dySampleNames[i] + "_"+varName+"_ZMM";
@@ -426,7 +426,7 @@ void PlotNtupleVariables_MuTauFR_new(
     double wRefEvents[5] = {74635450,54988117,32368249,19700377,11333705};
     
     for (int iDY=0; iDY<5; ++iDY) {
-        TFile * file = new TFile("XXX"+wRefSamples[iDY]+".root");//<-- change the correct path!!
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+wRefSamples[iDY]+".root");
         TH1D * histWeightsH = (TH1D*)file->Get("histWeightsH");
         wRefEvents[iDY] = histWeightsH->GetSumOfWeights();
     }
@@ -491,7 +491,7 @@ void PlotNtupleVariables_MuTauFR_new(
     // filling histograms for WJets samples
     for (int i=0; i<9; ++i) { // run over samples
         
-        TFile * file = new TFile("XXX"+wSampleNames[i]+".root");//<-- change the correct path!!
+        TFile * file = new TFile("/home/cmsdas/public/store/TausShortExercise/"+wSampleNames[i]+".root");
         TTree * tree = (TTree*)file->Get("MuTauFR");
         double normaliza = wNorm[i];
         TString histName = wSampleNames[i] + "_"+varName;
